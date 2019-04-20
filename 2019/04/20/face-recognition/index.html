@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Source code for this article on Github Face recognition identifies persons on face images or video frames. In a nutshell, a face recognition system extracts features from an input face image and compa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="face-recognition">
+<meta property="og:url" content="https://habom2310.github.io/2019/04/20/face-recognition/index.html">
+<meta property="og:site_name" content="Habom&#39;s blog">
+<meta property="og:description" content="Source code for this article on Github Face recognition identifies persons on face images or video frames. In a nutshell, a face recognition system extracts features from an input face image and compa">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://habom2310.github.io/2019/04/20/face-recognition/analysis.png">
+<meta property="og:image" content="https://habom2310.github.io/2019/04/20/face-recognition/res1.jpeg">
+<meta property="og:image" content="https://habom2310.github.io/2019/04/20/face-recognition/res2.jpeg">
+<meta property="og:image" content="https://habom2310.github.io/2019/04/20/face-recognition/res3.jpeg">
+<meta property="og:updated_time" content="2019-04-20T03:54:24.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="face-recognition">
+<meta name="twitter:description" content="Source code for this article on Github Face recognition identifies persons on face images or video frames. In a nutshell, a face recognition system extracts features from an input face image and compa">
+<meta name="twitter:image" content="https://habom2310.github.io/2019/04/20/face-recognition/analysis.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>face-recognition</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/me.html">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/habom2310">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/04/12/a/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://habom2310.github.io/2019/04/20/face-recognition/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://habom2310.github.io/2019/04/20/face-recognition/&text=face-recognition"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://habom2310.github.io/2019/04/20/face-recognition/&is_video=false&description=face-recognition"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=face-recognition&body=Check out this article: https://habom2310.github.io/2019/04/20/face-recognition/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://habom2310.github.io/2019/04/20/face-recognition/&name=face-recognition&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN-architecture"><span class="toc-number">1.</span> <span class="toc-text">CNN architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dataset"><span class="toc-number">2.</span> <span class="toc-text">Dataset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Face-alignment"><span class="toc-number">3.</span> <span class="toc-text">Face alignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Training"><span class="toc-number">4.</span> <span class="toc-text">Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis-Choosing-a-threshold"><span class="toc-number">5.</span> <span class="toc-text">Analysis (Choosing a threshold)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test"><span class="toc-number">6.</span> <span class="toc-text">Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">7.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">8.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        face-recognition
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Habom's blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-20T02:47:57.000Z" itemprop="datePublished">2019-04-20</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Source code for this article on <a href="https://github.com/habom2310/face-recognition-with-keras-and-dlib" target="_blank" rel="noopener">Github</a></p>
+<p>Face recognition identifies persons on face images or video frames. In a nutshell, a face recognition system extracts features from an input face image and compares them to the features of labeled faces in a database. Comparison is based on a feature similarity metric and the label of the most similar database entry is used to label the input image. If the similarity value is below a certain threshold the input image is labeled as unknown. Comparing two face images to determine if they show the same person is known as face verification.</p>
+<p>This article uses a deep convolutional neural network (CNN) to extract features from faces in input images. Keras is used for the CNN implementation, OpenCV and Dlib are for aligning faces on input images. Face recognition performance is evaluated on a small self-created dataset that you can replace with your own custom dataset, e.g. with images of your family and friends. </p>
+<h2 id="CNN-architecture"><a href="#CNN-architecture" class="headerlink" title="CNN architecture"></a>CNN architecture</h2><p>The CNN architecture used here is a variant of the inception architecture. More precisely, it is a variant of the NN4 architecture and identified as nn4.small2 model in the OpenFace project. This article uses a Keras implementation of that model whose definition was taken from the Keras-OpenFace project. The architecture details aren’t too important here, it’s only useful to know that there is a fully connected layer with 128 hidden units followed by an L2 normalization layer on top of the convolutional base. These two top layers are referred to as the embedding layer from which the 128-dimensional embedding vectors can be obtained. A Keras version of the nn4.small2 model can be created with create_model().</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from model import create_model</span><br><span class="line"></span><br><span class="line">nn4_small2 = create_model()</span><br></pre></td></tr></table></figure>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>The dataset consists of 20 images of 4 identities with 5 images for each people and were put into a separated folder. You can see the dataset folder structure below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">├───image</span><br><span class="line">│   ├───adam_levine</span><br><span class="line">│   │     ├───1.jpg</span><br><span class="line">│   │     ├───2.jpg</span><br><span class="line">│   │     ├───3.jpg</span><br><span class="line">│   │     ├───4.jpg</span><br><span class="line">│   │     ├───5.jpg</span><br><span class="line">│   ├───adele</span><br><span class="line">│   │     ├───1.jpg</span><br><span class="line">│   │     ├───2.jpg</span><br><span class="line">│   │     ├───3.jpg</span><br><span class="line">│   │     ├───4.jpg</span><br><span class="line">│   │     ├───5.jpg</span><br><span class="line">│   ├───ed_sheeran</span><br><span class="line">│   │     ├───1.jpg</span><br><span class="line">│   │     ├───2.jpg</span><br><span class="line">│   │     ├───3.jpg</span><br><span class="line">│   │     ├───4.jpg</span><br><span class="line">│   │     ├───5.jpg</span><br><span class="line">│   ├──taylor_swift</span><br><span class="line">│   │     ├───1.jpg</span><br><span class="line">│   │     ├───2.jpg</span><br><span class="line">│   │     ├───3.jpg</span><br><span class="line">│   │     ├───4.jpg</span><br><span class="line">│   │     ├───5.jpg</span><br></pre></td></tr></table></figure>
+<p>After gathering images for the dataset, we crop faces in those image to prepare for the training by running:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python face_detect_and_save.py</span><br></pre></td></tr></table></figure>
+<p>The above script detects faces on the images then crops and replaces original images in the dataset folder. Note that the images collected for the dataset should have only one face on each image.</p>
+<p>To load file for training:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">train_paths = glob.glob(&quot;image/*&quot;)</span><br><span class="line">nb_classes = len(train_paths)</span><br><span class="line">df_train = pd.DataFrame(columns=[&apos;image&apos;, &apos;label&apos;, &apos;name&apos;])</span><br><span class="line"></span><br><span class="line">for i,train_path in enumerate(train_paths):</span><br><span class="line">    name = train_path.split(&quot;\\&quot;)[-1]</span><br><span class="line">    images = glob.glob(train_path + &quot;/*&quot;)</span><br><span class="line">    for image in images:</span><br><span class="line">        df_train.loc[len(df_train)]=[image,i,name]</span><br></pre></td></tr></table></figure>
+<p>We can see people are labeled.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">print(df_train.head())</span><br><span class="line"></span><br><span class="line">                                                image label          name</span><br><span class="line">0                   image\adam_levine\adam-levine.jpg     0   adam_levine</span><br><span class="line">1         image\adam_levine\adam-levine_editedjpg.jpg     0   adam_levine</span><br><span class="line">2                       image\adam_levine\BBQakzy.jpg     0   adam_levine</span><br><span class="line">3                  image\adam_levine\MI0004052827.jpg     0   adam_levine</span><br><span class="line">4   image\adam_levine\rs_634x951-171107072148-634....     0   adam_levine</span><br><span class="line">5         image\adele\adele-karriere-aus-abschied.jpg     1         adele</span><br><span class="line">6                             image\adele\adele-t.jpg     1         adele</span><br><span class="line">7                               image\adele\adele.jpg     1         adele</span><br><span class="line">8                        image\adele\MI0003568106.jpg     1         adele</span><br><span class="line">9   image\adele\rs_1024x759-180124143107-1024-Adel...     1         adele</span><br><span class="line">10                      image\ed_sheeran\4e9fe179.jpg     2    ed_sheeran</span><br><span class="line">11                       image\ed_sheeran\asdvs23.jpg     2    ed_sheeran</span><br><span class="line">12                    image\ed_sheeran\ed-sheeran.jpg     2    ed_sheeran</span><br><span class="line">13  image\ed_sheeran\ed-sheeran_glamour_16mar17_re...     2    ed_sheeran</span><br><span class="line">14  image\ed_sheeran\GettyImages-800834188-920x584...     2    ed_sheeran</span><br><span class="line">15  image\taylor_swift\0c2f93cb-4151-4c08-be2e-a85...     3  taylor_swift</span><br><span class="line">16                     image\taylor_swift\416x416.jpg     3  taylor_swift</span><br><span class="line">17                     image\taylor_swift\BBL3h40.jpg     3  taylor_swift</span><br><span class="line">18                      image\taylor_swift\csdaf3.jpg     3  taylor_swift</span><br><span class="line">19  image\taylor_swift\taylor-swift-2016-crop-1523...     3  taylor_swift</span><br></pre></td></tr></table></figure>
+<h2 id="Face-alignment"><a href="#Face-alignment" class="headerlink" title="Face alignment"></a>Face alignment</h2><p>The nn4.small2.v1 model was trained with aligned face images, therefore, the face images from the custom dataset must be aligned too. Here, we use Dlib for face detection and OpenCV for image transformation and cropping to produce aligned 96x96 RGB face images. Download model <a href="https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat" target="_blank" rel="noopener">shape_predictor_68_face_landmarks</a> and put it in the project folder. By using the AlignDlib utility from the OpenFace project this is straightforward:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from align import AlignDlib</span><br><span class="line">alignment = AlignDlib(&apos;shape_predictor_68_face_landmarks.dat&apos;)</span><br><span class="line"></span><br><span class="line">def align_face(face):</span><br><span class="line">    (h,w,c) = face.shape</span><br><span class="line">    bb = dlib.rectangle(0, 0, w, h)</span><br><span class="line">    return alignment.align(96, face, bb,landmarkIndices=AlignDlib.OUTER_EYES_AND_NOSE)</span><br></pre></td></tr></table></figure>
+<h2 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h2><p>Embedding vector of each face in the dataset is used as reference for face comparison. The training step will calculate those embedding vectors and save under <code>train_embs.npy</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def load_and_align_images(filepaths):</span><br><span class="line">    aligned_images = []</span><br><span class="line">    for filepath in filepaths:</span><br><span class="line">        #print(filepath)</span><br><span class="line">        img = cv2.imread(filepath)</span><br><span class="line">        aligned = align_face(img)</span><br><span class="line">        aligned = (aligned / 255.).astype(np.float32)</span><br><span class="line">        aligned = np.expand_dims(aligned, axis=0)</span><br><span class="line">        aligned_images.append(aligned)</span><br><span class="line">            </span><br><span class="line">    return np.array(aligned_images)</span><br><span class="line"></span><br><span class="line">def calc_embs(filepaths, batch_size=64):</span><br><span class="line">    pd = []</span><br><span class="line">    for start in tqdm(range(0, len(filepaths), batch_size)):</span><br><span class="line">        aligned_images = load_and_align_images(filepaths[start:start+batch_size])</span><br><span class="line">        pd.append(nn4_small2.predict_on_batch(np.squeeze(aligned_images)))</span><br><span class="line">    embs = np.array(pd)</span><br><span class="line"></span><br><span class="line">    return np.array(embs)</span><br><span class="line"></span><br><span class="line">train_embs = calc_embs(df_train.image)</span><br><span class="line">np.save(&quot;train_embs.npy&quot;, train_embs)</span><br></pre></td></tr></table></figure>
+<h2 id="Analysis-Choosing-a-threshold"><a href="#Analysis-Choosing-a-threshold" class="headerlink" title="Analysis (Choosing a threshold)"></a>Analysis (Choosing a threshold)</h2><p>The similarity between 2 faces can be determined by the Euclead distance between their embedding vectors. Small distance means those 2 faces are alike and vice versa. Here we use the <code>distance.euclidean</code> of the scipy lib.</p>
+<p>In the dataset, we calculate the distance between faces in the same folder (match_distances) and between faces in the different folders (unmatch_distances), then determine a suitable threshold to distinguish between match and unmatch.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">label2idx = []</span><br><span class="line"></span><br><span class="line">for i in tqdm(range(len(train_paths))):</span><br><span class="line">    label2idx.append(np.asarray(df_train[df_train.label == i].index))</span><br><span class="line"></span><br><span class="line">match_distances = []</span><br><span class="line">for i in range(nb_classes):</span><br><span class="line">    ids = label2idx[i]</span><br><span class="line">    distances = []</span><br><span class="line">    for j in range(len(ids) - 1):</span><br><span class="line">        for k in range(j + 1, len(ids)):</span><br><span class="line">            distances.append(distance.euclidean(train_embs[ids[j]].reshape(-1), train_embs[ids[k]].reshape(-1)))</span><br><span class="line">    match_distances.extend(distances)</span><br><span class="line">    </span><br><span class="line">unmatch_distances = []</span><br><span class="line">for i in range(nb_classes):</span><br><span class="line">    ids = label2idx[i]</span><br><span class="line">    distances = []</span><br><span class="line">    for j in range(10):</span><br><span class="line">        idx = np.random.randint(train_embs.shape[0])</span><br><span class="line">        while idx in label2idx[i]:</span><br><span class="line">            idx = np.random.randint(train_embs.shape[0])</span><br><span class="line">        distances.append(distance.euclidean(train_embs[ids[np.random.randint(len(ids))]].reshape(-1), train_embs[idx].reshape(-1)))</span><br><span class="line">    unmatch_distances.extend(distances)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">_,_,_=plt.hist(match_distances,bins=100)</span><br><span class="line">_,_,_=plt.hist(unmatch_distances,bins=100,fc=(1, 0, 0, 0.5))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="/2019/04/20/face-recognition/analysis.png" title="choosing a threshold">
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>For each image to test, we have to find the face in the image.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">test_paths = glob.glob(&quot;test_image/*.jpg&quot;)</span><br><span class="line">for path in test_paths:</span><br><span class="line">    test_image = cv2.imread(path)</span><br><span class="line">    show_image = test_image.copy()</span><br><span class="line"></span><br><span class="line">    hogFaceDetector = dlib.get_frontal_face_detector()</span><br><span class="line">    faceRects = hogFaceDetector(test_image, 0)</span><br><span class="line">    </span><br><span class="line">    faces = []</span><br><span class="line">    for faceRect in faceRects:</span><br><span class="line">        x1 = faceRect.left()</span><br><span class="line">        y1 = faceRect.top()</span><br><span class="line">        x2 = faceRect.right()</span><br><span class="line">        y2 = faceRect.bottom()</span><br><span class="line">        face = test_image[y1:y2,x1:x2]</span><br><span class="line">        </span><br><span class="line">        faces.append(face)</span><br></pre></td></tr></table></figure>
+<p>then calculate the embedding vector of the face.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;len(faces) = &#123;0&#125;&quot;.format(len(faces)))</span><br><span class="line">if(len(faces)==0):</span><br><span class="line">    print(&quot;no face detected!&quot;)</span><br><span class="line">    continue</span><br><span class="line">else:    </span><br><span class="line">    test_embs = calc_emb_test(faces)</span><br><span class="line"></span><br><span class="line">test_embs = np.concatenate(test_embs)</span><br></pre></td></tr></table></figure>
+<p>then calculate Euclead distances with faces in <code>train_embs</code>. The id which has smallest distance and smaller than the threshold is the right label.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">people = []</span><br><span class="line">for i in range(test_embs.shape[0]):</span><br><span class="line">    distances = []</span><br><span class="line">    for j in range(len(train_paths)):</span><br><span class="line">        distances.append(np.min([distance.euclidean(test_embs[i].reshape(-1), train_embs[k].reshape(-1)) for k in label2idx[j]]))</span><br><span class="line">    if np.min(distances)&gt;threshold:</span><br><span class="line">        people.append(&quot;unknown&quot;)</span><br><span class="line">    else:</span><br><span class="line">        res = np.argsort(distances)[:1]</span><br><span class="line">        people.append(res)</span><br></pre></td></tr></table></figure>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>Show the results:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i,faceRect in enumerate(faceRects):</span><br><span class="line">    x1 = faceRect.left()</span><br><span class="line">    y1 = faceRect.top()</span><br><span class="line">    x2 = faceRect.right()</span><br><span class="line">    y2 = faceRect.bottom()</span><br><span class="line">    cv2.rectangle(show_image,(x1,y1),(x2,y2),(255,0,0),3)</span><br><span class="line">    cv2.putText(show_image,names[i],(x1,y1-5), cv2.FONT_HERSHEY_SIMPLEX, 2,(255,0,0),3,cv2.LINE_AA)</span><br></pre></td></tr></table></figure>
+<img src="/2019/04/20/face-recognition/res1.jpeg" title="result 1">
+<img src="/2019/04/20/face-recognition/res2.jpeg" title="result 2">
+<img src="/2019/04/20/face-recognition/res3.jpeg" title="result 3">
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://krasserm.github.io/2018/02/07/deep-face-recognition/" target="_blank" rel="noopener">http://krasserm.github.io/2018/02/07/deep-face-recognition/</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/me.html">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/habom2310">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN-architecture"><span class="toc-number">1.</span> <span class="toc-text">CNN architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dataset"><span class="toc-number">2.</span> <span class="toc-text">Dataset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Face-alignment"><span class="toc-number">3.</span> <span class="toc-text">Face alignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Training"><span class="toc-number">4.</span> <span class="toc-text">Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis-Choosing-a-threshold"><span class="toc-number">5.</span> <span class="toc-text">Analysis (Choosing a threshold)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test"><span class="toc-number">6.</span> <span class="toc-text">Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-number">7.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">8.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://habom2310.github.io/2019/04/20/face-recognition/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://habom2310.github.io/2019/04/20/face-recognition/&text=face-recognition"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://habom2310.github.io/2019/04/20/face-recognition/&is_video=false&description=face-recognition"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=face-recognition&body=Check out this article: https://habom2310.github.io/2019/04/20/face-recognition/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://habom2310.github.io/2019/04/20/face-recognition/&title=face-recognition"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://habom2310.github.io/2019/04/20/face-recognition/&name=face-recognition&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Ha Nguyen
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/me.html">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/habom2310">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
