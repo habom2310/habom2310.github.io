@@ -43,7 +43,28 @@
       <link rel="stylesheet" href="/css/rtl.css">
     
     <!-- rss -->
-    
+<style>
+.popup-btn {
+  padding: .9em 2.1875em;
+  border: 0;
+  border-radius: .1875em;
+  background-color: #EC338E;
+  box-shadow: none;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer; }
+  .show-example-btn:hover {
+    background-color: #FF379A; }
+  .show-example-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.125em #f2f4f6, 0 0 0 0.25em #a7adb2; }
+  .show-example-btn::-moz-focus-inner {
+    border: 0; }
+  .show-example-btn:active {
+    background-color: #EC338E; }
+</style>    
     
 </head>
 
@@ -140,9 +161,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><b>Countdown</b></p>
+    <h2><b>Countdown</b></h2>
     <p><i>My next birthday</i></p>
     <div class="countdown"></div>
+    <br>
+    <h2><b>Popup</b></h2>
+    <br>
+    <button id="btnpopup" class="popup-btn" onclick="popupNyan()" >Popup</button>
     
 
       
@@ -234,6 +259,7 @@
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
     <!-- jquery -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
 <script src="/lib/jquery/jquery.min.js"></script>
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
 <script src="/js/main.js"></script>
@@ -247,7 +273,27 @@ $(function() {
     });
 });
 </script>    
-        
+
+<!-- popup -->
+<script type="text/javascript">
+
+function popupNyan() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Meoooo',
+    text: 'This is Nyan cat',
+    backdrop: `
+    rgba(0,0,123,0.4)
+    url("nyan-cat.gif")
+    left top
+    no-repeat
+  `
+  }
+)
+
+}
+
+</script>           
 <!-- search -->
 
 <!-- Google Analytics -->
