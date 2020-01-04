@@ -165,10 +165,12 @@
     <p><i>My next birthday</i></p>
     <div class="countdown"></div>
     <br>
-    <h2><b>Popup</b></h2>
-    <br>
-    <button id="btnpopup" class="popup-btn" onclick="popupNyan()" >Popup</button>
-    
+    <h2><b>Popup #1</b></h2>
+    <button class="popup-btn" onclick="popupNyan()" >Nyan</button>
+    <h2><b>Popup #2</b></h2>
+    <button class="popup-btn" onclick="popupIP()" >Show your IP</button>
+    <h2><b>Popup #3</b></h2>
+    <button class="popup-btn" onclick="popupGithub()" >Find your Git profile</button>
 
       
 
@@ -290,7 +292,65 @@ function popupNyan() {
   `
   }
 )
+};
 
+function popupIP() {
+  const ipAPI = 'https://api.ipify.org?format=json';
+
+Swal.queue([{
+  title: 'Your public IP',
+  confirmButtonText: 'Show my public IP',
+  text:
+    'Your public IP will be received ' +
+    'via AJAX request',
+  showLoaderOnConfirm: true,
+  preConfirm: () => {
+    return fetch(ipAPI)
+      .then(response => response.json())
+      .then(data => Swal.insertQueueStep(data.ip))
+      .catch(() => {
+        Swal.insertQueueStep({
+          icon: 'error',
+          title: 'Unable to get your public IP'
+        })
+      })
+  }
+}])
+};
+
+function popupGithub(){
+  Swal.fire({
+  title: 'Submit your Github username',
+  input: 'text',
+  inputAttributes: {
+    autocapitalize: 'off'
+  },
+  showCancelButton: true,
+  confirmButtonText: 'Look up',
+  showLoaderOnConfirm: true,
+  preConfirm: (login) => {
+    return fetch(`https://api.github.com/users/${login}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+}).then((result) => {
+  if (result.value) {
+    Swal.fire({
+      title: `${result.value.login}'s avatar`,
+      imageUrl: result.value.avatar_url
+    })
+  }
+})
 }
 
 </script>           
