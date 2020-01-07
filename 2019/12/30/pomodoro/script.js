@@ -64,6 +64,15 @@ function startTimer() {
     start.disabled = false;
     isNull = true;
     points += 25;
+    Swal.fire({
+      icon: 'success',
+      title: 'Congratulation!!!',
+      text: 'Take a few minutes off before starting a new POMODORO',
+      imageUrl: 'https://media.tenor.com/images/f5619d50d900236abf4d0fe329571721/tenor.gif',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Congrat image',
+    });
     audio.innerHTML = `<iframe width="400p" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/89201472&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
   `;
     pointsContainer.innerHTML = "FlowPoints: " + points;
