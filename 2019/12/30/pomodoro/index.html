@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="timer"></div>
+	<div id="timer" class="timer"></div>
 	<button id="start">Start</button>
 	<button id="pause">Pause</button>
 	<button id="stop">Stop</button>
@@ -20,7 +20,20 @@
 		From <a href="https://habom2310.github.io/about/me.html">@Habom</a></a> with love/<a href="https://github.com/Rashomar/pomodoro-timer-js">GitHub</a>
 	</span>
 </div>
-<script src="script.js"></script>
+
+<!-- countdown -->
+<script type="text/javascript">
+	$(function() {
+		$('.timer').countdown({
+			date: +(new Date) + 1500000,
+			render: function(data) {
+            $('.timer').text(data.hour + ":" + data.minute + ":" + data.second);
+          }
+		});
+	});
+	</script>    
+
+<script src="/js/jquery.countdown.js"></script>    
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
 
 </body>
