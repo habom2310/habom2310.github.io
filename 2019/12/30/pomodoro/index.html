@@ -61,9 +61,9 @@
 		$('.timer').countdown({
 			date: +(new Date) + timeleft,
 			render: function(data) {
-				$('.timer').text(data.hour + ":" + data.minute + ":" + data.second);
 				tmpminute = data.minute;
 				tmpsecond = data.second;
+				timer.innerHTML = tmpminute + ":" + tmpsecond
 			},
 			onEnd: function(){
 				points += 25;
