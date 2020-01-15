@@ -56,7 +56,9 @@
 		}else if(this.innerText == "Continue"){
 			this.innerText = "Continue";
 			timeLeft = (tmpminute*60 + tmpsecond)*1000;
-			$('.countdown').data("countdown").update((new Date) + timeLeft);
+			console.log(tmpminute)
+			console.log(tmpsecond)
+			$('.countdown').data("countdown").update({newDate: +(new Date) + timeLeft});
 		}
 	})
 
@@ -100,6 +102,7 @@
 		audio.innerHTML = "";
 		let tmpminute = 24;
 		let tmpsecond = 59
+		timer.innerHTML = time;
 	};
 
 	function pauseTimer(){
