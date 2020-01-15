@@ -41,7 +41,9 @@
 	let points = 0;
 
 	let tmpminute = 24;
-	let tmpsecond = 59
+	let tmpsecond = 59;
+
+	let status = "new"
 
 	start.addEventListener('click',function(e){
 		if(this.innerText == "Start"){
@@ -53,12 +55,13 @@
 			pauseTimer();
 		}else if(this.innerText == "Continue"){
 			this.innerText = "Continue";
-			$('.countdown').data("countdown").start();
+			timeLeft = (tmpminute*60 + tmpsecond)*1000;
+			$('.countdown').data("countdown").update((new Date) + timeleft);
 		}
 	})
 
 	stop.addEventListener('click', function(e){
-		e.preventDefault()
+		e.preventDefault();
 		resetPomodoro();
 	})
 
@@ -95,6 +98,8 @@
 		$('.countdown').data('countdown').stop();
 		start.innerText = "Start";
 		audio.innerHTML = "";
+		let tmpminute = 24;
+		let tmpsecond = 59
 	};
 
 	function pauseTimer(){
