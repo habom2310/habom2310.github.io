@@ -87,13 +87,13 @@
 	};
 
 	function resetPomodoro(){
-		$(this.el).addClass('ended');
+		$('.timer').stop();
 		start.innerText = "Start";
 		audio.innerHTML = "";
 	};
 
 	function pauseTimer(){
-		$($('.timer').el).addClass('ended');
+		$('.timer').stop();
 	};
 
 	</script>    
