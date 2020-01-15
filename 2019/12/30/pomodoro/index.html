@@ -58,7 +58,7 @@
 			timeLeft = (tmpminute*60 + tmpsecond)*1000;
 			console.log(tmpminute)
 			console.log(tmpsecond)
-			$('.countdown').data("countdown").update({newDate: +(new Date) + timeLeft});
+			$('.countdown').data("countdown").update(+(new Date) + timeLeft).start();
 		}
 	})
 
