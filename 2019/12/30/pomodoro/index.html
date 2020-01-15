@@ -44,13 +44,16 @@
 	let tmpsecond = 59
 
 	start.addEventListener('click',function(e){
-		if(this.innerText == "Start" || this.innerText == "Continue"){
+		if(this.innerText == "Start"){
 			this.innerText = "Pause";
 			timeLeft = (tmpminute*60 + tmpsecond)*1000;
 			startTimer(timeLeft);
 		}else if(this.innerText == "Pause"){
 			this.innerText = "Continue";
 			pauseTimer();
+		}else if(this.innerText == "Continue"){
+			this.innerText = "Continue";
+			$('.countdown').data("countdown").start();
 		}
 	})
 
