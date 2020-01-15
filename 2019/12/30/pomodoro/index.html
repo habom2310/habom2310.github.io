@@ -45,7 +45,7 @@
 	start.addEventListener('click',function(e){
 		if(this.innerText == "Start" || this.innerText == "Continue"){
 			this.innerText = "Pause";
-			timeLeft = tmpminute*60 + tmpsecond;
+			timeLeft = (tmpminute*60 + tmpsecond)*1000;
 			startTimer(timeLeft);
 		}else if(this.innerText == "Pause"){
 			this.innerText = "Continue";
@@ -62,8 +62,8 @@
 		$('.timer').countdown({
 			date: +(new Date) + timeleft,
 			render: function(data) {
-				tmpminute = data.minute;
-				tmpsecond = data.second;
+				tmpminute = data.min;
+				tmpsecond = data.sec;
 				timer.innerHTML = tmpminute + ":" + tmpsecond
 			},
 			onEnd: function(){
@@ -86,6 +86,7 @@
 	function resetPomodoro(){
 		$(this.el).addClass('ended');
 		start.innerText = "Start";
+		audio.innerHTML = "";
 	};
 
 	function pauseTimer(){
