@@ -64,7 +64,10 @@
 			render: function(data) {
 				tmpminute = data.min;
 				tmpsecond = data.sec;
-				timer.innerHTML = tmpminute + ":" + tmpsecond
+				if (tmpsecond == 60){
+					tmpsecond = 0
+				}
+				timer.innerHTML = this.leadingZeros(tmpminute, 2) + ":" + this.leadingZeros(tmpsecond, 2)
 			},
 			onEnd: function(){
 				points += 25;
@@ -90,7 +93,7 @@
 	};
 
 	function pauseTimer(){
-		$(this.el).addClass('ended');
+		$($('.timer').el).addClass('ended');
 	};
 
 	</script>    
