@@ -55,6 +55,7 @@
 	})
 
 	stop.addEventListener('click', function(e){
+		e.preventDefault()
 		resetPomodoro();
 	})
 
@@ -88,13 +89,13 @@
 	};
 
 	function resetPomodoro(){
-		$('.countdown').empty();
+		$('.countdown').data('countdown').stop();
 		start.innerText = "Start";
 		audio.innerHTML = "";
 	};
 
 	function pauseTimer(){
-		$('.countdown').empty();
+		$('.countdown').data('countdown').stop();
 	};
 
 	</script>    
