@@ -43,12 +43,12 @@
 	let tmpsecond = 0
 
 	start.addEventListener('click',function(e){
-		if(this.innerText == "Start" | this.innerText == "Continue"){
-			this.text = "Pause";
+		if(this.innerText == "Start" || this.innerText == "Continue"){
+			this.innerText = "Pause";
 			timeLeft = tmpminute*60 + tmpsecond;
 			startTimer(timeLeft);
 		}else if(this.innerText == "Pause"){
-			this.text = "Continue";
+			this.innerText = "Continue";
 			pauseTimer();
 		}
 	})
