@@ -11,8 +11,7 @@
 <div id="wrapper">
 	<div id="timer" class="timer"></div>
 	<button id="start">Start</button>
-	<button id="pause">Pause</button>
-	<button id="stop">Stop</button>
+	<button id="stop">Reset</button>
 	<div id="audio"></div>
 	<div id="points"></div>
 </div>
@@ -24,19 +23,74 @@
 
 
 <script src="/lib/jquery/jquery.min.js"></script>
-<script src="/js/jquery.countdown.js"></script>    
+<script src="/js/jquery.countdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
 
 <!-- countdown -->
 <script type="text/javascript">
-	$(function() {
+
+	const time = 25 + ":" + "0"+0;
+	let timer = document.getElementById('timer');
+	const start = document.getElementById('start');
+	const stop = document.getElementById('stop');
+	const audio = document.getElementById('audio');
+	timer.innerHTML = time;
+
+	let pointsContainer = document.getElementById('points');
+	let points = 0;
+
+	let tmpminute = 25;
+	let tmpsecond = 0
+
+	start.addEventListener('click',function(e){
+		if(this.innerText == "Start" | this.innerText == "Continue"){
+			this.text = "Pause";
+			timeLeft = tmpminute*60 + tmpsecond;
+			startTimer(timeLeft);
+		}else if(this.innerText == "Pause"){
+			this.text = "Continue";
+			pauseTimer();
+		}
+	})
+
+	stop.addEventListener('click', function(e){
+		resetPomodoro();
+	})
+
+	function startTimer(timeleft) {
 		$('.timer').countdown({
-			date: +(new Date) + 1500000,
+			date: +(new Date) + timeleft,
 			render: function(data) {
-            $('.timer').text(data.hour + ":" + data.minute + ":" + data.second);
-          }
-		});
-	});
+				$('.timer').text(data.hour + ":" + data.minute + ":" + data.second);
+				tmpminute = data.minute;
+				tmpsecond = data.second;
+			},
+			onEnd: function(){
+				points += 25;
+				Swal.fire({
+				icon: 'success',
+				title: 'Congratulation!!!',
+				text: 'Take a few minutes off before starting a new POMODORO',
+				imageUrl: 'https://media.tenor.com/images/f5619d50d900236abf4d0fe329571721/tenor.gif',
+				imageWidth: 200,
+				imageHeight: 200,
+				imageAlt: 'Congrat image',
+				});
+				audio.innerHTML = `<iframe width="400p" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/89201472&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>`;
+				pointsContainer.innerHTML = "FlowPoints: " + points;
+		  	}
+		})
+	};
+
+	function resetPomodoro(){
+		$('.timer').addClass('ended');
+		start.innerText = "Start";
+	};
+
+	function pauseTimer(){
+		$('.timer').addClass('ended');
+	};
+
 	</script>    
 
 </body>
