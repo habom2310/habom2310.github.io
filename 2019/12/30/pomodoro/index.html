@@ -56,7 +56,7 @@
 		}else if(this.innerText == "Continue"){
 			this.innerText = "Continue";
 			timeLeft = (tmpminute*60 + tmpsecond)*1000;
-			$('.countdown').data("countdown").update((new Date) + timeleft);
+			$('.countdown').data("countdown").update((new Date) + timeLeft);
 		}
 	})
 
