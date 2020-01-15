@@ -13,6 +13,7 @@
 	<button id="start">Start</button>
 	<button id="stop">Reset</button>
 	<div id="audio"></div>
+	<div id="countdown" class="countdown"></div>
 	<div id="points"></div>
 </div>
 <div class="footer">
@@ -59,7 +60,7 @@
 
 	function startTimer(timeleft) {
 		console.log(timeleft)
-		$('.timer').countdown({
+		$('.countdown').countdown({
 			date: +(new Date) + timeleft,
 			render: function(data) {
 				tmpminute = data.min;
@@ -87,13 +88,13 @@
 	};
 
 	function resetPomodoro(){
-		$('.timer').countdown().stop();
+		$('.countdown').empty();
 		start.innerText = "Start";
 		audio.innerHTML = "";
 	};
 
 	function pauseTimer(){
-		$('.timer').countdown().stop();
+		$('.countdown').empty();
 	};
 
 	</script>    
