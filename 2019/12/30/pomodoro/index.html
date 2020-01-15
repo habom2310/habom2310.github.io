@@ -39,8 +39,8 @@
 	let pointsContainer = document.getElementById('points');
 	let points = 0;
 
-	let tmpminute = 25;
-	let tmpsecond = 0
+	let tmpminute = 24;
+	let tmpsecond = 59
 
 	start.addEventListener('click',function(e){
 		if(this.innerText == "Start" || this.innerText == "Continue"){
@@ -87,13 +87,13 @@
 	};
 
 	function resetPomodoro(){
-		$('.timer').stop();
+		$('.timer').countdown().stop();
 		start.innerText = "Start";
 		audio.innerHTML = "";
 	};
 
 	function pauseTimer(){
-		$('.timer').stop();
+		$('.timer').countdown().stop();
 	};
 
 	</script>    
