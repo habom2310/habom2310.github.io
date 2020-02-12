@@ -70,14 +70,15 @@
         var sorted_repos = getGitInfo();
         var repos_html = "";
         for (var i in sorted_repos){
-            url = sorted_repos[i]["html_url"];
-            name = sorted_repos[i]["name"].replace("-", " ");
-            desc = sorted_repos[i]["description"];
-            language = sorted_repos[i]["language"];
-            stargazers_url = url + "/stargazers";
-            stargazers_count = sorted_repos[i]["stargazers_count"];
-            forks_url = url + "/fork";
-            forks_count = sorted_repos[i]["forks_count"];
+            var url = sorted_repos[i]["html_url"];
+            console.log(url)
+            var name = sorted_repos[i]["name"].replace("-", " ");
+            var desc = sorted_repos[i]["description"];
+            var language = sorted_repos[i]["language"];
+            var stargazers_url = url + "/stargazers";
+            var stargazers_count = sorted_repos[i]["stargazers_count"];
+            var forks_url = url + "/fork";
+            var forks_count = sorted_repos[i]["forks_count"];
             var repo_html = templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, forks_count, language);
             var column_html = `<div class="row">
             {}
@@ -93,6 +94,7 @@
             }
             repos_html = repos_html + repo_html;
         };
+        console.log(repos_html);
 
         var res = `
         <div class=repo-container>
