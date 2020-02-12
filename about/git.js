@@ -30,13 +30,12 @@
                 //     res = res + " " + sorted_repos[i]["stargazers_count"];
                 // }
                 res = JSON.parse(JSON.stringify(sorted_repos));
+                console.log(res)
+                return res;
             }
         };
         xhttp.open("GET", "https://api.github.com/users/habom2310/repos", true);
         xhttp.send();
-        console.log(res)
-        
-        return res;
     }
 
     function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, fork_count, language) {
@@ -90,7 +89,7 @@
                 {}
                 </div>
                 `.format(repo_html);
-                repo_html = row_html;
+                repo_html = JSON.parse(JSON.stringify(row_html));
             }
             repos_html = repos_html + repo_html;
         };
