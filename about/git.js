@@ -29,7 +29,7 @@
                 // for (var i in sorted_repos){
                 //     res = res + " " + sorted_repos[i]["stargazers_count"];
                 // }
-                res = sorted_repos;
+                res = JSON.parse(JSON.stringify(sorted_repos));
             }
         };
         xhttp.open("GET", "https://api.github.com/users/habom2310/repos", true);
