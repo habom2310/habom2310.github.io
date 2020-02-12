@@ -35,7 +35,7 @@ function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_u
         <div class="pinned-item-list-item-content">
             <div class="d-flex flex-items-center position-relative">
                 {}
-            <div>
+            </div>
             <a href="{}" class="text-bold min-width-0 flex-auto">{}</a>
             <p class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">{}</p>
             <p class="mb-0 f6 text-gray">
@@ -76,7 +76,7 @@ function fetchRepos() {
         </div>
         `.format(repo_html);
         temp_column_html = temp_column_html + column_html;
-        if (i % 2 == 0){
+        if (i % 2 == 1){
             var row_html = `<div class="row">
             {}
             </div>
