@@ -21,11 +21,11 @@
 
     function getGitInfo() {
         var xhttp = new XMLHttpRequest();
-        let res;
+        var res;
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                repos = JSON.parse(this.responseText);
-                sorted_repos = sortByKey(repos, "stargazers_count");
+                var repos = JSON.parse(this.responseText);
+                var sorted_repos = sortByKey(repos, "stargazers_count");
                 // for (var i in sorted_repos){
                 //     res = res + " " + sorted_repos[i]["stargazers_count"];
                 // }
