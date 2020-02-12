@@ -22,7 +22,6 @@ function getGitInfo() {
     var sorted_repos;
     $.get("https://api.github.com/users/habom2310/repos", function(data, status){
         sorted_repos = sortByKey(data, "stargazers_count");
-        console.log(sorted_repos);
       });
 
     return sorted_repos;
@@ -58,11 +57,10 @@ function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_u
 
 function fetchRepos() {
     var sorted_repos = getGitInfo();
-    console.log(sorted_repos);
     var repos_html = "";
+    var temp_column_html = ""
     for (var i in sorted_repos){
         var url = sorted_repos[i]["html_url"];
-        console.log(url)
         var name = sorted_repos[i]["name"].replace("-", " ");
         var desc = sorted_repos[i]["description"];
         var language = sorted_repos[i]["language"];
@@ -71,21 +69,22 @@ function fetchRepos() {
         var forks_url = url + "/fork";
         var forks_count = sorted_repos[i]["forks_count"];
         var repo_html = templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, forks_count, language);
-        var column_html = `<div class="row">
+        var column_html = `<div class="column">
         {}
         </div>
         `.format(repo_html);
         repo_html = column_html;
+        temp_column_html = temp_column_html + repos_html;
         if (i % 2 == 0){
             var row_html = `<div class="row">
             {}
             </div>
-            `.format(repo_html);
-            repo_html = JSON.parse(JSON.stringify(row_html));
+            `.format(temp_column_html);
+            repo_html = row_html;
+            temp_column_html = "";
         }
         repos_html = repos_html + repo_html;
     };
-    console.log(repos_html);
     var res = `
     <div class=repo-container>
     {}
