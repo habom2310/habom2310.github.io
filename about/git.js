@@ -75,17 +75,15 @@ function fetchRepos() {
         {}
         </div>
         `.format(repo_html);
-        repo_html = column_html;
-        temp_column_html = temp_column_html + repos_html;
+        temp_column_html = temp_column_html + column_html;
         if (i % 2 == 0){
             var row_html = `<div class="row">
             {}
             </div>
             `.format(temp_column_html);
-            repo_html = row_html;
+            repos_html = repos_html + row_html;
             temp_column_html = "";
         }
-        repos_html = repos_html + repo_html;
     };
     var res = `
     <div class=repo-container>
