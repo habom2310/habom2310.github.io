@@ -34,6 +34,7 @@
         };
         xhttp.open("GET", "https://api.github.com/users/habom2310/repos", true);
         xhttp.send();
+        console.log(res)
         
         return res;
     }
@@ -102,10 +103,8 @@
         return res
     }
     
-    showoff.addEventListener("load", run);
-
-    function run(){
+    showoff.addEventListener("load", function(){
         showoff.innerHTML = fetchRepos();
-    }
+    });
 
 })();
