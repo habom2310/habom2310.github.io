@@ -103,7 +103,7 @@
         return res
     }
     
-    showoff.addEventListener("load", function(){
+    $(document).ready(function(){
         showoff.innerHTML = fetchRepos();
     });
 
