@@ -21,6 +21,7 @@ function sortByKey(array, key) {
 function getGitInfo() {
     $.get("https://api.github.com/users/habom2310/repos", function(data, status){
         sorted_repos = sortByKey(data, "stargazers_count");
+        console.log(sorted_repos);
       });
 }
 
