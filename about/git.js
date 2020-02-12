@@ -19,18 +19,9 @@ function sortByKey(array, key) {
 }
 
 function getGitInfo() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var repos = JSON.parse(this.responseText);
-            sorted_repos = sortByKey(repos, "stargazers_count");
-            // for (var i in sorted_repos){
-            //     res = res + " " + sorted_repos[i]["stargazers_count"];
-            // }
-        }
-    };
-    xhttp.open("GET", "https://api.github.com/users/habom2310/repos", true);
-    xhttp.send();
+    $.get("https://api.github.com/users/habom2310/repos", function(data, status){
+        sorted_repos = sortByKey(data, "stargazers_count");
+      });
 }
 
 function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, fork_count, language) {
