@@ -21,7 +21,6 @@
 
     function getGitInfo() {
         var xhttp = new XMLHttpRequest();
-        var res;
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var repos = JSON.parse(this.responseText);
@@ -29,7 +28,7 @@
                 // for (var i in sorted_repos){
                 //     res = res + " " + sorted_repos[i]["stargazers_count"];
                 // }
-                res = JSON.parse(JSON.stringify(sorted_repos));
+                var res = JSON.parse(JSON.stringify(sorted_repos));
                 console.log(res)
                 return res;
             }
@@ -68,6 +67,7 @@
 
     function fetchRepos() {
         var sorted_repos = getGitInfo();
+        console.log(sorted_repos);
         var repos_html = "";
         for (var i in sorted_repos){
             var url = sorted_repos[i]["html_url"];
