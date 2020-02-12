@@ -19,12 +19,13 @@ function sortByKey(array, key) {
 }
 
 function getGitInfo() {
-    var sorted_repos;
-    $.get("https://api.github.com/users/habom2310/repos", function(data, status){
-        sorted_repos = sortByKey(data, "stargazers_count");
-        console.log(sorted_repos);
-      });
-
+    var repos = JSON.parse($.ajax({
+                                type: "GET",
+                                url: "https://api.github.com/users/habom2310/repos",
+                                async: false
+                                }).responseText)
+    var sorted_repos = sortByKey(repos, "stargazers_count");
+    console.log(sorted_repos);
     return sorted_repos;
 }
 
