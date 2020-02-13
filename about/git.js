@@ -31,6 +31,7 @@ function getGitInfo() {
 
 function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, fork_count, language) {
     var res = `
+<li class="col-12 col-md-6 mb-3 d-flex"
     <div class="Box d-flex p-3 width-full">
         <div class="pinned-item-list-item-content">
             <div class="d-flex flex-items-center position-relative">
@@ -52,7 +53,8 @@ function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_u
             </p>
         </div>
     </div>
-    `.format(repo_icon, url, name, desc, language, stargazers_url, star_icon, stargazers_count, forks_url, fork_icon, fork_count);
+</li>    
+`.format(repo_icon, url, name, desc, language, stargazers_url, star_icon, stargazers_count, forks_url, fork_icon, fork_count);
     
     return res;
 }
@@ -71,22 +73,23 @@ function fetchRepos() {
         var forks_url = url + "/fork";
         var forks_count = sorted_repos[i]["forks_count"];
         var repo_html = templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, forks_count, language);
-        var column_html = `<div class="column">
-        {}
-        </div>
-        `.format(repo_html);
-        temp_column_html = temp_column_html + column_html;
-        if (i % 2 == 1){
-            var row_html = `<div class="row flex-wrap">
-            {}
-            </div>
-            `.format(temp_column_html);
-            repos_html = repos_html + row_html;
-            temp_column_html = "";
-        }
+        // var column_html = `<div class="column">
+        // {}
+        // </div>
+        // `.format(repo_html);
+        // temp_column_html = temp_column_html + column_html;
+        // if (i % 2 == 1){
+        //     var row_html = `<div class="row flex-wrap">
+        //     {}
+        //     </div>
+        //     `.format(temp_column_html);
+        //     repos_html = repos_html + row_html;
+        //     temp_column_html = "";
+        // }
+        repos_html = repos_html + repo_html;
     };
     var res = `
-    <div class=repo-container>
+    <div class="repo-container d-flex flex-wrap mb-4">
     {}
     </div>
     `.format(repos_html);
