@@ -52,6 +52,9 @@
 .pinned-item-desc {
   flex: 1 0 auto;
 }
+.flex-shrink-0 {
+  flex-shrink: 0!important;
+}
 
 .d-block {
   display: block!important;
@@ -68,6 +71,11 @@
 .mt-2 {
   margin-top: 8px!important;
 }
+
+.mr-2 {
+  margin-right: 8px!important;
+}
+
 .mr-3 {
   margin-right: 16px!important;
 }
@@ -92,7 +100,7 @@
 
 .Box {
   background-color: #1d1f21;
-  border: 1px solid #1d1f21;
+  border: 1px solid #858788;
   border-radius: 3px;
 }
 
