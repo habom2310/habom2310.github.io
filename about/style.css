@@ -23,8 +23,8 @@
   flex-wrap: wrap!important;
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (min-width: 768px){
+
+@media (min-width: 450px){
   .col-md-6 {
     width: 50%;
   }
@@ -47,6 +47,10 @@
 
 .flex-items-center {
   align-items: center!important;
+}
+
+.flex-content-stretch {
+    align-content: stretch!important;
 }
 
 .text-bold {
