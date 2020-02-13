@@ -61,7 +61,7 @@ function fetchRepos() {
     var sorted_repos = getGitInfo();
     var repos_html = "";
     var temp_column_html = ""
-    for (var i in sorted_repos){
+    for (var i = 0; i < 8; i ++){
         var url = sorted_repos[i]["html_url"];
         var name = sorted_repos[i]["name"].replace(new RegExp("-", "g"), " ");
         var desc = sorted_repos[i]["description"];
