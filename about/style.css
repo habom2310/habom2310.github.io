@@ -23,15 +23,14 @@
   flex-wrap: wrap!important;
 }
 
-
-@media (max-width: 696px){
-  .col-md-6 {
-    width: 100%;
-  }
+.col-12 {
+  width: 100%;
 }
 
-.col-12 {
-  width: 50%;
+@media (min-width: 696px){
+  .col-md-6 {
+    width: 50%;
+  }
 }
 
 /* For ShowoffConner */
@@ -136,10 +135,6 @@
   display: flex!important;
 }
 
-.p-3 {
-  padding: 16px!important;
-}
-
 .repo-language-color {
   position: relative;
   top: 1px;
@@ -159,4 +154,8 @@
 
 .a {
   text-decoration: none !important;
+}
+
+.content a{
+  background-image: none !important;
 }

@@ -31,7 +31,7 @@ function getGitInfo() {
 
 function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, fork_count, language) {
     var res = `
-<li class="col-12 col-md-6 mb-3 p-3 d-flex flex-content-stretch">
+<li class="col-md-6 col-12 mb-3 p-3 d-flex flex-content-stretch">
     <div class="Box d-flex p-3 width-full">
         <div class="pinned-item-list-item-content">
             <div class="d-flex flex-items-center position-relative">
@@ -89,9 +89,9 @@ function fetchRepos() {
         repos_html = repos_html + repo_html;
     };
     var res = `
-    <div class="repo-container d-flex flex-wrap mb-4">
+    <ol class="repo-container d-flex flex-wrap mb-4">
     {}
-    </div>
+    </ol>
     `.format(repos_html);
     return res
 }
