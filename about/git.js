@@ -31,7 +31,7 @@ function getGitInfo() {
 
 function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_url, fork_count, language) {
     var res = `
-    <div class="Box d-flex p-3">
+    <div class="Box d-flex p-3 width-full">
         <div class="pinned-item-list-item-content">
             <div class="d-flex flex-items-center position-relative">
                 {}
