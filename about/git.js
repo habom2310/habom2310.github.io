@@ -35,8 +35,8 @@ function templateRepo(name, url, desc, stargazers_url, stargazers_count, forks_u
         <div class="pinned-item-list-item-content">
             <div class="d-flex flex-items-center position-relative">
                 {}
+                <a href="{}" class="text-bold min-width-0 flex-auto">{}</a>
             </div>
-            <a href="{}" class="text-bold min-width-0 flex-auto">{}</a>
             <p class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">{}</p>
             <p class="mb-0 f6 text-gray">
                 <span class="d-inline-block mr-3">
@@ -63,7 +63,7 @@ function fetchRepos() {
     var temp_column_html = ""
     for (var i in sorted_repos){
         var url = sorted_repos[i]["html_url"];
-        var name = sorted_repos[i]["name"].replace("-", " ");
+        var name = sorted_repos[i]["name"].replace(new RegExp("-", "g"), " ");
         var desc = sorted_repos[i]["description"];
         var language = sorted_repos[i]["language"];
         var stargazers_url = url + "/stargazers";

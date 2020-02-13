@@ -5,11 +5,7 @@
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  width: 46%;
-  padding: 10px;
-  margin: 2%;
-  border: 1px solid;
-  height: 300px; /* Should be removed. Only for demonstration */
+  width: 50%;
 }
 
 /* Clear floats after the columns */
@@ -43,6 +39,7 @@
 
 .text-bold {
   font-weight: 600!important;
+  color: #c1c2c3
 }
 
 .min-width-0 {
@@ -90,12 +87,12 @@
 }
 
 .text-gray {
-  color: #586069!important;
+  color: #c9cacc!important;
 }
 
 .Box {
-  background-color: #fff;
-  border: 1px solid #d1d5da;
+  background-color: #1d1f21;
+  border: 1px solid #1d1f21;
   border-radius: 3px;
 }
 
