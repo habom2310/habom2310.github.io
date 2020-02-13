@@ -77,7 +77,7 @@ function fetchRepos() {
         `.format(repo_html);
         temp_column_html = temp_column_html + column_html;
         if (i % 2 == 1){
-            var row_html = `<div class="row">
+            var row_html = `<div class="row flex-wrap">
             {}
             </div>
             `.format(temp_column_html);
