@@ -24,14 +24,14 @@
 }
 
 
-@media (min-width: 696px){
+@media (max-width: 696px){
   .col-md-6 {
-    width: 50%;
+    width: 100%;
   }
 }
 
 .col-12 {
-  width: 100%;
+  width: 50%;
 }
 
 /* For ShowoffConner */
