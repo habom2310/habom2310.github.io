@@ -144,6 +144,20 @@
   border-radius: 50%;
 }
 
+/* .badge{
+  background-color: #fffae6;
+  border-color: #ece5c6;
+} */
+
+.badge-color {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
 .muted-link {
   color: #c9cacc!important;
 }

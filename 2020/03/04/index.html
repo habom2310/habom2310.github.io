@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang=en>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='load_img.js'></script>
+
+    <p>Classify 5 species of flower</p>
+
+    <form action="#" onsubmit="sendRequest()">
+        <img id='output'></img>
+        <input id="drag_drop" type="file" accept='image/*' onchange='openFile(event)'>
+        <p id='noti'>Drag your picture here or click in this area.</p>
+        <!-- <button type="submit">Upload</button> -->        
+    </form>
+
+    <p id="predict" class="pt2"></p>> 
+
+</html>
