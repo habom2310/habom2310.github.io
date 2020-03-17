@@ -5,8 +5,8 @@ const smoke_img = new Image();
 smoke_img.src = "smoke2.png";
 
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('models')
+    faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('/models')
   ]).then(ready)
 
 function ready(){
