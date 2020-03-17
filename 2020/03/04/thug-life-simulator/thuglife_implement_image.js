@@ -13,10 +13,6 @@ function ready(){
   document.getElementById('drag_drop').style.visibility = "visible";
 }
 
-function draw_thuglife(canvas, landmarks){
-    
-}
-
 async function uploadImage() {
   const imgFile = document.getElementById('drag_drop').files[0]
   console.log(imgFile)
@@ -63,6 +59,9 @@ async function startImage(img){
 
         console.log(rotated_glass)
         console.log(glass_img)
+
+        console.log(left_eyebrow.x)
+        console.log(left_eyebrow.y)
 
         ctx.drawImage(smoke_img, lip.x - smoke_img.width, lip.y)
         ctx.drawImage(rotated_glass, left_eyebrow.x, left_eyebrow.y)
