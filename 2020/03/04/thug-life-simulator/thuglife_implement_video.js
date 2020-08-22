@@ -10,11 +10,31 @@ Promise.all([
   ]).then(startVideo)
 
 function startVideo() {
-    navigator.getUserMedia(
-      { video: {} },
-      stream => video.srcObject = stream,
-      err => console.error(err)
-    )
+    // var constrains = {audio:false, video:true}
+    navigator.getUserMedia = (
+        navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia
+    );
+    if (typeof navigator.mediaDevices.getUserMedia === 'undefined') {
+        navigator.getUserMedia(
+            { video: {} },
+            stream => video.srcObject = stream,
+            err => console.error(err));
+    } else {
+        navigator.mediaDevices.getUserMedia({audio:false, video:true}).then(function(stream){
+            video.srcObject = stream;
+        }).catch(function(err){
+            console.error(err);
+        });
+    }
+
+    // navigator.getUserMedia(
+    //   { video: {} },
+    //   stream => video.srcObject = stream,
+    //   err => console.error(err)
+    // )
 }
 
 video.addEventListener('play', () => {
